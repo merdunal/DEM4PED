@@ -8,3 +8,5 @@ Besu/Node-*/data/key.pub
 
 Foundry/out/
 Foundry/cache/
+
+.DS_Store
