@@ -1,0 +1,147 @@
+Node'ları tekrar başlatmak için 4 ayrı terminal aç ve Aşağıdaki komutları çalıştır. (enode yazan komutları çalıştırma sadece besu ile başlayanlar)
+
+
+cd Node-1
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --profile=ENTERPRISE
+
+enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303
+
+cd Node-2
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30304 --rpc-http-port=8546 --profile=ENTERPRISE
+
+enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304
+
+cd Node-3
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30305 --rpc-http-port=8547 --profile=ENTERPRISE
+
+enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305
+
+cd Node-4
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30306 --rpc-http-port=8548 --profile=ENTERPRISE
+
+enode://b8d92336cd31441b45f4bbc638331c99e11eece135a1a30d397f22778058f1e5ac9f8c39fe5761fa139057c70387885acac646f8e0cf19fa438a0aa493231b44@127.0.0.1:30306
+
+
+
+
+
+cd BESU (Yeniden başlatırken bunları yapmana gerek yok)
+curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303","enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304","enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305","enode://b8d92336cd31441b45f4bbc638331c99e11eece135a1a30d397f22778058f1e5ac9f8c39fe5761fa139057c70387885acac646f8e0cf19fa438a0aa493231b44@127.0.0.1:30306"]], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303","enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304","enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305","enode://b8d92336cd31441b45f4bbc638331c99e11eece135a1a30d397f22778058f1e5ac9f8c39fe5761fa139057c70387885acac646f8e0cf19fa438a0aa493231b44@127.0.0.1:30306"]], "id":1}' http://127.0.0.1:8546/
+curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303","enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304","enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305","enode://b8d92336cd31441b45f4bbc638331c99e11eece135a1a30d397f22778058f1e5ac9f8c39fe5761fa139057c70387885acac646f8e0cf19fa438a0aa493231b44@127.0.0.1:30306"]], "id":1}' http://127.0.0.1:8547/
+curl -X POST --data '{"jsonrpc":"2.0","method":"perm_addNodesToAllowlist","params":[["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303","enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304","enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305","enode://b8d92336cd31441b45f4bbc638331c99e11eece135a1a30d397f22778058f1e5ac9f8c39fe5761fa139057c70387885acac646f8e0cf19fa438a0aa493231b44@127.0.0.1:30306"]], "id":1}' http://127.0.0.1:8548/
+
+
+
+
+
+Yeni bir terminal aç ve sırasıyla komutları aynı terminalde çalıştır.
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303"],"id":1}' http://127.0.0.1:8546
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303"],"id":1}' http://127.0.0.1:8547
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303"],"id":1}' http://127.0.0.1:8548
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304"],"id":1}' http://127.0.0.1:8547
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304"],"id":1}' http://127.0.0.1:8548
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305"],"id":1}' http://127.0.0.1:8548
+
+
+Ağın ve Node'ların çalıştığını kontrol etmek için şu komutu gir:
+curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8545/ -H "Content-Type: application/json"
+Çıktısı şu şekilde olmalı:
+{"jsonrpc":"2.0","id":1,"result":"0x3"}%
+
+
+
+
+
+
+https://besu.hyperledger.org/private-networks/tutorials/permissioning dökümantasyonunu takip ederek bir permissioned hyperledger besu ağı oluşturdum. Şu anki sorun, ağı tekrar başlatmak istediğimde şu adımları her seferinde tekrar çalıştırmam gerekiyor:
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --profile=ENTERPRISE
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30304 --rpc-http-port=8546 --profile=ENTERPRISE
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30305 --rpc-http-port=8547 --profile=ENTERPRISE
+besu --data-path=data --genesis-file=../genesis.json --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT --host-allowlist="*" --rpc-http-cors-origins="*" --p2p-port=30306 --rpc-http-port=8548 --profile=ENTERPRISE
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303"],"id":1}' http://127.0.0.1:8546
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303"],"id":1}' http://127.0.0.1:8547
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://ea7d6fe491b82cf1260752ddf0851c7ccc2824740feed568b019eb188833906dfb3cfdc343513cb75d0157afa1c98408a3012c142f2dc57105cc3595872b928b@127.0.0.1:30303"],"id":1}' http://127.0.0.1:8548
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304"],"id":1}' http://127.0.0.1:8547
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://dd9c3057bd7c111d43dd5948446b3250c713471a6dad67f7233b2f34474c793d73dd5413c28298fe40c292d5df0f3d2632705358da528ab5aab1abc3f4c21b3b@127.0.0.1:30304"],"id":1}' http://127.0.0.1:8548
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["enode://7a2ae5e4d6cf55f5d0e41a7b3b85eb1b4b221d4f7667ea9d2e548a1b4ed608754288f1426c39d35daa0b7bc36ad2dbcb874f884e8b6da214578b3b53fdddf4c2@127.0.0.1:30305"],"id":1}' http://127.0.0.1:8548
+
+Senden istediğim bunu otomasyona dönüştürmen. Öncelikle bana ağı başlatmamı ve durdurmamı sağlayacak basit bir script ver.
+
+
+./network.sh start
+./network.sh stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Ön Hazırlık
+
+Gereksinimler
+
+
+
+Java:
+Hyperledger Besu, OpenJDK (11, 17 veya 21) gerektirir. Linux dağıtımınıza uygun JDK'yı yükleyin. Örneğin, Ubuntu üzerinde:
+
+sudo apt update
+sudo apt install openjdk-21-jdk
+Başarılı şekilde inip inmediğini kontrol et (Benim terminale PATH olarak eklemem gerekti)
+
+
+
+Hyperledger Besu:
+Besu'yu resmi web sitesinden veya paket yöneticiniz aracılığıyla yükleyin. İndirdiğiniz veya derlediğiniz Besu çalıştırılabilir dosyasının PATH üzerinde olduğundan emin olun.
+
+https://besu.hyperledger.org/private-networks/get-started/install/binary-distribution
+
+
+
+Git:
+Projeyi klonlayabilmek için Git'in yüklü olduğundan emin olun.
+
+sudo apt install git
+
+
+
+Foundry:
+Foundry'yi yüklemek için Foundry'nin resmi kurulum talimatlarını takip edin. Linux üzerinde genellikle aşağıdaki komut yeterlidir:
+
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+
+
+
+2. Projeyi GitHub'dan İndirme
+
+Repository'yi Klonlayın
+
+
+
+3. Besu Ağını Başlatma
+Besu Klasörüne Geçin:
+
+cd Besu
+
+
+Besu Ağını Başlatan Script'i Çalıştırın:
+Terminalde Bash kullanıyorsanız (Linux'ta varsayılan olarak Bash bulunur), aşağıdaki komut ile ağı başlatın:
+
+./network.sh start
+

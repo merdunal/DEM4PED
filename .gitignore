@@ -1,0 +1,10 @@
+Besu/Node-*/data/database/
+Besu/Node-*/data/caches/
+Besu/Node-*/data/DATABASE_METADATA.json
+Besu/Node-*/data/VERSION_METADATA.json
+
+Besu/Node-*/data/key
+Besu/Node-*/data/key.pub
+
+Foundry/out/
+Foundry/cache/
