@@ -30,7 +30,7 @@ start_network() {
   # Node-1 için (RPC port: 8545)
   besu --data-path=Node-1/data --genesis-file="$GENESIS_FILE" \
     --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled \
-    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT \
+    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,WEB3,PERM,IBFT,TXPOOL \
     --rpc-http-port=8545 \
     --host-allowlist="*" --rpc-http-cors-origins="*" --profile=ENTERPRISE &
   echo $! >> $PID_FILE
@@ -39,7 +39,7 @@ start_network() {
   # Node-2 için (p2p: 30304, RPC: 8546)
   besu --data-path=Node-2/data --genesis-file="$GENESIS_FILE" \
     --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled \
-    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT \
+    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,WEB3,PERM,IBFT,TXPOOL \
     --host-allowlist="*" --rpc-http-cors-origins="*" \
     --p2p-port=30304 --rpc-http-port=8546 --profile=ENTERPRISE &
   echo $! >> $PID_FILE
@@ -48,7 +48,7 @@ start_network() {
   # Node-3 için (p2p: 30305, RPC: 8547)
   besu --data-path=Node-3/data --genesis-file="$GENESIS_FILE" \
     --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled \
-    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT \
+    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,WEB3,PERM,IBFT,TXPOOL \
     --host-allowlist="*" --rpc-http-cors-origins="*" \
     --p2p-port=30305 --rpc-http-port=8547 --profile=ENTERPRISE &
   echo $! >> $PID_FILE
@@ -57,7 +57,7 @@ start_network() {
   # Node-4 için (p2p: 30306, RPC: 8548)
   besu --data-path=Node-4/data --genesis-file="$GENESIS_FILE" \
     --permissions-nodes-config-file-enabled --permissions-accounts-config-file-enabled \
-    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,PERM,IBFT \
+    --rpc-http-enabled --rpc-http-api=ADMIN,ETH,NET,WEB3,PERM,IBFT,TXPOOL \
     --host-allowlist="*" --rpc-http-cors-origins="*" \
     --p2p-port=30306 --rpc-http-port=8548 --profile=ENTERPRISE &
   echo $! >> $PID_FILE
