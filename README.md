@@ -48,6 +48,9 @@ cd DEM4PED
 ```
 
 ## 3. Besu Ağını Başlatma
+
+#### Önemli! Key ve Key.pub değerleri birbiriyle entegre çalışır. Network.sh daki keyler ve her nodedaki key aynı olmalı key.pub da ona göre olmalı.
+
 ### Adımlar
 1. Besu Klasörüne Geçin:
 ```bash
